@@ -134,6 +134,14 @@ resource "akamai_networklist_network_list" "IPBLOCKLIST" {
   mode = "REPLACE"
 }
 
+# resource to activate the Akamai Network List.
+resource "akamai_networklist_activations" "activation_IPBLOCKLIST" {
+  network_list_id = akamai_networklist_network_list.IPBLOCKLIST.id
+  network = var.network
+  notes  = var.activation_notes
+  notification_emails = [ var.email ]
+}
+
 # resource to set IP addresses in the IPBLOCKLISTEXCEPTIONS, REPLACE mode will always 100% fully update all entries.
 resource "akamai_networklist_network_list" "IPBLOCKLISTEXCEPTIONS" {
   name = "IPBLOCKLISTEXCEPTIONS"
@@ -141,6 +149,14 @@ resource "akamai_networklist_network_list" "IPBLOCKLISTEXCEPTIONS" {
   description = "IPBLOCKLISTEXCEPTIONS"
   list = var.ipblock_list_exceptions
   mode = "REPLACE"
+}
+
+# resource to activate the Akamai Network List.
+resource "akamai_networklist_activations" "activation_IPBLOCKLISTEXCEPTIONS" {
+  network_list_id = akamai_networklist_network_list.IPBLOCKLISTEXCEPTIONS.id
+  network = var.network
+  notes  = var.activation_notes
+  notification_emails = [ var.email ]
 }
 
 # resource to set GEOs in country codes in the GEOBLOCKLIST, REPLACE mode will always 100% fully update all entries.
@@ -152,6 +168,14 @@ resource "akamai_networklist_network_list" "GEOBLOCKLIST" {
   mode = "REPLACE"
 }
 
+# resource to activate the Akamai Network List.
+resource "akamai_networklist_activations" "activation_GEOBLOCKLIST" {
+  network_list_id = akamai_networklist_network_list.GEOBLOCKLIST.id
+  network = var.network
+  notes  = var.activation_notes
+  notification_emails = [ var.email ]
+}
+
 # resource to set IP addresses in the SECUITYBYPASSLIST, REPLACE mode will always 100% fully update all entries.
 resource "akamai_networklist_network_list" "SECURITYBYPASSLIST" {
   name = "SECURITYBYPASSLIST"
@@ -159,6 +183,14 @@ resource "akamai_networklist_network_list" "SECURITYBYPASSLIST" {
   description = "SECURITYBYPASSLIST"
   list = var.securitybypass_list
   mode = "REPLACE"
+}
+
+# resource to activate the Akamai Network List.
+resource "akamai_networklist_activations" "activation_SECURITYBYPASSLIST" {
+  network_list_id = akamai_networklist_network_list.SECURITYBYPASSLIST.id
+  network = var.network
+  notes  = var.activation_notes
+  notification_emails = [ var.email ]
 }
 
 # resource to set all the Network Lists properly in DENY/BLOCKING mode.
