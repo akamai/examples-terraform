@@ -358,7 +358,6 @@ resource "akamai_appsec_attack_group" "attack_group_total_outbound" {
   #condition_exception = file("${path.module}/appsec-snippets/attack-groups/attack_group_total_outbound_exception.json")
 }
 
-/* NOT ACTIVATING THE SECURITY CONFIGURATION
 # resource to activate the Akamai Application Security configuration
 resource "akamai_appsec_activations" "activation" {
   config_id = akamai_appsec_configuration.akamai_appsec.config_id
@@ -378,9 +377,7 @@ resource "akamai_appsec_activations" "activation" {
     akamai_appsec_slow_post.slow_post
   ]
 }
-*/
 
-/* NOT ACTIVATING THE SECURITY CONFIGURATION
 # resource to activate the Akamai Application Security configuration
 resource "akamai_appsec_activations" "activation-production" {
   config_id = akamai_appsec_configuration.akamai_appsec.config_id
@@ -400,4 +397,3 @@ resource "akamai_appsec_activations" "activation-production" {
     akamai_appsec_slow_post.slow_post
   ]
 }
-*/
